@@ -4,10 +4,17 @@ import react from "@vitejs/plugin-react-swc";
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
+    base: "",
     server: {
         host: true,
     },
     build: {
-        assetsInclude: /\.(mp3)$/i,
+        rollupOptions: {
+            output: {
+                entryFileNames: `assets/[name].js`,
+                chunkFileNames: `assets/[name].js`,
+                assetFileNames: `assets/[name].[ext]`,
+            },
+        },
     },
 });

@@ -1,11 +1,11 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import yellow from "./sounds/yellow.mp3";
-import blue from "./sounds/blue.mp3";
-import red from "./sounds/red.mp3";
-import green from "./sounds/green.mp3";
-import wrong from "./sounds/wrong.mp3";
+import yellow from "./components/sounds/yellow.mp3";
+import blue from "./components/sounds/blue.mp3";
+import red from "./components/sounds/red.mp3";
+import green from "./components/sounds/green.mp3";
+import wrong from "./components/sounds/wrong.mp3";
 
 createRoot(document.getElementById("root")).render(<App />);
 
