@@ -1,6 +1,7 @@
 import { Grid, Button } from "@mui/material";
 import { styles, inputs } from "../main";
 import { useState, useEffect } from "react";
+import ChangeSongs from "./ChangeSongs";
 
 export default function Grids({
     level,
@@ -11,6 +12,7 @@ export default function Grids({
     setGameOver,
     shouldAnimate,
     setShouldAnimate,
+    playAudio,
 }) {
     let index = 0;
 
@@ -24,10 +26,13 @@ export default function Grids({
     const [isAnimating, setIsAnimating] = useState("");
 
     const animateButton = (button) => {
-        setIsAnimating(button);
+        setTimeout(() => {
+            setIsAnimating(button);
+            ChangeSongs(button + ".mp3", playAudio, false);
+        }, 800);
         setTimeout(() => {
             setIsAnimating("");
-        }, 350);
+        }, 1150);
     };
 
     const playSequence = () => {
@@ -70,6 +75,7 @@ export default function Grids({
 
     function checkGame(button) {
         if (play[index] === button) {
+            ChangeSongs(button + ".mp3", playAudio, false);
             index++;
             if (play.length === index) {
                 index = 0;
@@ -81,6 +87,7 @@ export default function Grids({
             }
         } else {
             setGameOver(true);
+            ChangeSongs(button + ".mp3", playAudio, true);
         }
     }
 
