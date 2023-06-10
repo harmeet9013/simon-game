@@ -1,7 +1,7 @@
 {
   "name": "simon-game",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "homepage": "https://harmeet9013.github.io/simon-game/",
   "scripts": {

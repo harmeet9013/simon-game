@@ -1,6 +1,12 @@
-import { AudioFilePaths } from "../main";
+import yellow from "./sounds/yellow.mp3";
+import blue from "./sounds/blue.mp3";
+import red from "./sounds/red.mp3";
+import green from "./sounds/green.mp3";
+import wrong from "./sounds/wrong.mp3";
 
 export default function ChangeSongs(button, playAudio, gameOver) {
+    const AudioFilePaths = [yellow, blue, red, green, wrong];
+
     const callMe = (item) => {
         playAudio.setAttribute("src", item);
         playAudio.volume = 0.5;
