@@ -5,6 +5,9 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
     plugins: [react()],
     base: "./",
+    resolve: {
+        extensions: [".jsx", ".json", ".mp3"],
+    },
     build: {
         rollupOptions: {
             output: {
