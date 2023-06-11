@@ -10,7 +10,7 @@ export default function App() {
     const playAudio = new Audio();
 
     return (
-        <div>
+        <div className="container">
             <Heading
                 level={level}
                 setLevel={setLevel}
@@ -29,6 +29,16 @@ export default function App() {
                 setShouldAnimate={setShouldAnimate}
                 playAudio={playAudio}
             />
+            <p className="desc-para">
+                This website is a Simon game, a classic memory game that
+                challenges players to remember and repeat a sequence of colors
+                and sounds. It uses HTML, CSS, and ReactJS to create the game
+                logic and the user interface. ReactJS is a popular JavaScript
+                library for creating user interfaces that are fast and dynamic.
+                The website has a simple and colorful design that appeals to
+                both children and adults.
+            </p>
+            <h3 className="created-by">by Harmeet Singh</h3>
         </div>
     );
 }
