@@ -1,23 +1,25 @@
 body {
     background-color: rgb(24, 39, 39);
+    text-align: center;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .headingContainer {
+    display: flex;
+    justify-content: center;
+    margin: auto;
     text-align: center;
+    transition: all 200ms ease;
 }
 
 .headingText {
     color: white;
-    margin: auto;
     text-align: center;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 3px;
     font-weight: 500;
-    transition: all 200ms ease;
-    overflow: hidden;
-    display: inline-block;
-    font-size: 80px;
+
+    font-size: 50px;
     margin-top: 50px;
 }
 
@@ -27,10 +29,13 @@ body {
 }
 
 .boxesGrid {
-    width: 700px;
+    width: auto;
+    margin-right: 70px;
+    margin-bottom: 70px;
+    display: inline-flex;
+    justify-content: center;
     margin: auto;
     text-align: center;
-    justify-content: center;
     margin-top: 100px;
 }
 

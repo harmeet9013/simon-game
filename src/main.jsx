@@ -6,9 +6,10 @@ createRoot(document.getElementById("root")).render(<App />);
 
 export const styles = {
     box: {
+        display: "grid",
         width: 200,
         height: 200,
-        backgroundColor: "white",
+        backgroundColor: "",
         marginBottom: "70px",
         marginRight: "70px",
         border: "10px solid black",
