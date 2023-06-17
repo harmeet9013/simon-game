@@ -1,17 +1,38 @@
-export default function PrintCurrentLevel({ level, gameOver }) {
+export default function PrintCurrentLevel({
+    level,
+    setLevel,
+    gameOver,
+    setGameOver,
+}) {
+    const handleClick = () => {
+        setLevel(0);
+        setGameOver(false);
+    };
+
     if (level === 0) {
         return (
-            <h1 className="headingText">
-                Press 'ENTER' or tap anywhere to start the game!
-            </h1>
+            <p className="heading-text">
+                Press <strong>'ENTER'</strong> or <strong>'Tap'</strong>
+                anywhere to start the game!
+            </p>
         );
     } else if (gameOver === true) {
         return (
-            <h1 className="headingText" style={{ color: "red" }}>
-                Wrong answer! Game over!
-            </h1>
+            <div>
+                <p className="heading-text" style={{ color: "red" }}>
+                    Wrong answer! <br />
+                    <strong>Game over!</strong>
+                </p>
+                <button className="restart-button" onClick={handleClick}>
+                    Restart Game
+                </button>
+            </div>
         );
     } else {
-        return <h1 className="headingText">Level {level}</h1>;
+        return (
+            <p className="heading-text">
+                Level <strong>{level}</strong>
+            </p>
+        );
     }
 }

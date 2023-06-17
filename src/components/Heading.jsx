@@ -7,6 +7,7 @@ export default function Heading({
     setLevel,
     setPlay,
     gameOver,
+    setGameOver,
     setShouldAnimate,
 }) {
     function getRandomItem() {
@@ -47,8 +48,13 @@ export default function Heading({
     }, []);
 
     return (
-        <div className="headingContainer">
-            <PrintCurrentLevel level={level} gameOver={gameOver} />
+        <div className="heading-container">
+            <PrintCurrentLevel
+                level={level}
+                setLevel={setLevel}
+                gameOver={gameOver}
+                setGameOver={setGameOver}
+            />
         </div>
     );
 }

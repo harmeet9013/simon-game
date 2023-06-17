@@ -16,6 +16,7 @@ export default function App() {
                 setLevel={setLevel}
                 setPlay={setPlay}
                 gameOver={gameOver}
+                setGameOver={setGameOver}
                 setShouldAnimate={setShouldAnimate}
             />
             <Grids

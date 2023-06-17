@@ -5,52 +5,60 @@ body {
 }
 
 .container {
-    display: block;
+    display: grid;
+    grid-template-columns: auto;
     align-items: center;
+    gap: 50px;
     text-align: center;
     justify-content: center;
 }
 
-.headingContainer {
+.heading-container {
     margin: auto;
     transition: all 200ms ease;
 }
 
-.headingText {
+.heading-text {
     color: white;
     text-align: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 3px;
-    font-weight: 500;
     font-size: 50px;
     margin-top: 50px;
 }
 
-.headingContainer:hover .headingText {
+.heading-container:hover .headingText {
     font-weight: 600;
     text-shadow: 0 0 10px rgba(106, 106, 106, 0.5);
 }
 
-.boxesGrid {
+.boxes-grid {
     width: auto;
-    margin-right: 70px;
-    margin-bottom: 70px;
-    display: inline-flex;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 70px;
     justify-content: center;
     margin: auto;
     text-align: center;
-    margin-top: 100px;
 }
 
-.animate-button {
-    animation: button-animation 0.3s;
+.game-button {
+    width: 200px;
+    height: 200px;
+    border: 10px solid black;
+    border-radius: 50px;
+    transition: all 100ms ease;
+}
+
+.game-button:active {
+    transform: scale(0.9);
 }
 
 .desc-para {
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 2px;
     margin: auto;
-    margin-top: 40px;
     width: auto;
     max-width: 800px;
     text-align: justify;
@@ -60,6 +68,18 @@ body {
 .created-by {
     color: rgba(255, 255, 255, 0.8);
     font-style: italic;
+}
+
+.restart-button {
+    padding: 20px 30px;
+    border-radius: 50px;
+    background-color: rgba(50, 50, 50, 0.5);
+    border: 2px solid rgb(177, 255, 177);
+    color: rgb(177, 255, 177);
+    font-size: 20px;
+    box-shadow: 0 0 10px green;
+    cursor: pointer;
+    margin-top: 40px;
 }
 
 @keyframes button-animation {
@@ -73,5 +93,32 @@ body {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        gap: 20px;
+    }
+
+    .boxes-grid {
+        text-align: center;
+        justify-items: center;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .game-button {
+        height: 150px;
+        width: 150px;
+    }
+
+    .heading-text {
+        margin: 50px 20px;
+    }
+
+    .desc-para {
+        padding: 40px;
+        margin-top: 40px;
     }
 }

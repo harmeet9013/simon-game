@@ -1,5 +1,4 @@
-import { Grid, Button } from "@mui/material";
-import { styles, inputs } from "../main";
+import { inputs } from "../main";
 import { useState, useEffect } from "react";
 import ChangeSongs from "./ChangeSongs";
 
@@ -47,14 +46,12 @@ export default function Grids({
         const buttons = [];
         for (const button of inputs) {
             buttons.push(
-                <Button
+                <div
                     key={button}
-                    component="button"
-                    sx={{
-                        ...styles.box,
+                    className="game-button"
+                    style={{
                         backgroundColor: button,
                         "&:hover": {
-                            ...styles.box,
                             backgroundColor: button,
                         },
                         animation:
@@ -98,12 +95,6 @@ export default function Grids({
     }
 
     if (level > 0 && gameOver == false) {
-        return (
-            <div className="boxesGrid">
-                <Grid container ml={14} width={600}>
-                    {renderButtons()}
-                </Grid>
-            </div>
-        );
+        return <div className="boxes-grid">{renderButtons()}</div>;
     }
 }
