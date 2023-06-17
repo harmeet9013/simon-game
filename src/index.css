@@ -65,11 +65,6 @@ body {
     padding: 50px;
 }
 
-.created-by {
-    color: rgba(255, 255, 255, 0.8);
-    font-style: italic;
-}
-
 .restart-button {
     padding: 20px 30px;
     border-radius: 50px;
@@ -77,9 +72,57 @@ body {
     border: 2px solid rgb(177, 255, 177);
     color: rgb(177, 255, 177);
     font-size: 20px;
+    font-weight: 700;
     box-shadow: 0 0 10px green;
     cursor: pointer;
     margin-top: 40px;
+    transition: all 200ms ease;
+}
+
+.restart-button:hover {
+    color: black;
+    background-color: rgb(177, 255, 177);
+    transform: scale(1.05);
+    box-shadow: 0 0 0;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 40px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-top: 12px;
+}
+
+.footer a {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: -2px;
+    border: 2px solid #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: all 200ms ease;
+}
+
+.footer a:hover {
+    background-color: white;
+    color: black;
+    /* border: 2px solid black; */
+    transform: scale(1.1);
 }
 
 @keyframes button-animation {
