@@ -1,6 +1,9 @@
+import { useState, useEffect, Fragment } from "react";
+import { Divider } from "@mui/material";
+
 import { inputs } from "../main";
-import { useState, useEffect } from "react";
 import ChangeSongs from "./ChangeSongs";
+import RenderButtons from "./RenderButtons";
 
 export default function Grids({
     level,
@@ -13,69 +16,38 @@ export default function Grids({
     setShouldAnimate,
     playAudio,
 }) {
-    let index = 0;
+    let playerIndex = 0;
 
-    useEffect(() => {
-        if (shouldAnimate === true) {
-            playSequence();
-            setShouldAnimate(false);
-        }
-    });
+    const [highlightedButton, setHighlightedButton] = useState("");
 
-    const [isAnimating, setIsAnimating] = useState("");
-
-    const animateButton = (button) => {
-        setTimeout(() => {
-            setIsAnimating(button);
-            ChangeSongs(button + ".mp3", playAudio, false);
-        }, 800);
-        setTimeout(() => {
-            setIsAnimating("");
-        }, 1150);
+    const getRandomItem = () => {
+        const randomIndex = Math.floor(Math.random() * inputs.length);
+        const item = inputs[randomIndex];
+        return item;
     };
 
     const playSequence = () => {
-        for (let i = 0; i < play.length; i++) {
-            setTimeout(() => {
-                animateButton(play[i]);
-            }, i * 500);
-        }
+        setTimeout(() => {
+            for (let i = 0; i < play.length; i++) {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        setHighlightedButton(play[i]);
+                        ChangeSongs(play[i] + ".mp3", playAudio, false);
+                    }, 800);
+                    setTimeout(() => {
+                        setHighlightedButton("");
+                    }, 1600);
+                }, i * 500);
+            }
+        }, 100);
     };
 
-    const renderButtons = () => {
-        const buttons = [];
-        for (const button of inputs) {
-            buttons.push(
-                <div
-                    key={button}
-                    className="game-button"
-                    style={{
-                        backgroundColor: button,
-                        "&:hover": {
-                            backgroundColor: button,
-                        },
-                        animation:
-                            isAnimating === button
-                                ? "button-animation 0.5s"
-                                : "none",
-                    }}
-                    onClick={() => {
-                        if (!isAnimating) {
-                            checkGame(button);
-                        }
-                    }}
-                />
-            );
-        }
-        return buttons;
-    };
-
-    function checkGame(button) {
-        if (play[index] === button) {
+    const checkGame = (button) => {
+        if (play[playerIndex] === button) {
             ChangeSongs(button + ".mp3", playAudio, false);
-            index++;
-            if (play.length === index) {
-                index = 0;
+            playerIndex++;
+            if (play.length === playerIndex) {
+                playerIndex = 0;
                 setPlay((prevInputs) => {
                     return [...prevInputs, getRandomItem()];
                 });
@@ -86,15 +58,25 @@ export default function Grids({
             setGameOver(true);
             ChangeSongs(button + ".mp3", playAudio, true);
         }
-    }
+    };
 
-    function getRandomItem() {
-        const randomIndex = Math.floor(Math.random() * inputs.length);
-        const item = inputs[randomIndex];
-        return item;
-    }
+    useEffect(() => {
+        if (shouldAnimate) {
+            playSequence();
+            setShouldAnimate(false);
+        }
+    });
 
     if (level > 0 && gameOver == false) {
-        return <div className="boxes-grid">{renderButtons()}</div>;
+        return (
+            <Fragment>
+                <RenderButtons
+                    checkGame={checkGame}
+                    shouldAnimate={shouldAnimate}
+                    highlightedButton={highlightedButton}
+                />
+                <Divider variant="middle" flexItem />
+            </Fragment>
+        );
     }
 }
